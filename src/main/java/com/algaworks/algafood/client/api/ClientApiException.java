@@ -28,6 +28,8 @@ public class ClientApiException extends RuntimeException {
 	private void deserializeProblem(RestClientResponseException cause) {
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+		
+		//resolver o problema com o OffsetDateTime
 		mapper.registerModule(new JavaTimeModule());
 		mapper.findAndRegisterModules();
 		
